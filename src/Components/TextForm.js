@@ -24,11 +24,10 @@ export default function TextForm(props) {
   const [text, setText] = useState("");
   // // text = "new text"; // Wrong way to change the state
   // // setText("new text"); // Correct way to change the state
-
   return (
     <>
       <div className="container my-3 mx-6">
-        <h2 style={{color: props.mode==='dark'?'white':'#042743'}}>{props.heading}</h2>
+        <h2 style={{color: props.mode==='dark'?'white':'#042743'}}>{props.heading} </h2>
         <div className="mb-3 txa">
           <textarea
             className="form-control"
@@ -39,16 +38,18 @@ export default function TextForm(props) {
             style={{backgroundColor: props.mode==='dark'?'#212529':'white', color: props.mode==='dark'?'white':'#042743'}}
           ></textarea>
         </div>
-        <button className={`btn btn-${props.typo}`} onClick={handleUpClick}>
+        <button className={`btn btn-${props.typo} my-1`} onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className={`btn btn-${props.typo} mx-3`} onClick={handleLoClick}>
+        <button className={`btn btn-${props.typo} mx-3 my-1`} onClick={handleLoClick}>
           Convert to Lowercase
         </button>
       </div>
       <div className="container my-4" style={{color: props.mode==='dark'?'white':'#042743'}}>
         <h2>Your text summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
+        <p>{text.split(" ").filter(word => word !== "").length} words and {text.length} characters</p>
+
+
         <p>{Math.floor(0.008 * text.split(" ").length)} minutes read</p>
         <h2>Preview</h2>
         <p>{text}</p>
