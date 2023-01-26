@@ -2,10 +2,10 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
-// import About from "./Components/About";
+import About from "./Components/About";
 import React, { useState, useSyncExternalStore } from "react";
 import Alert from "./Components/Alert";
-// import { Route, Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 
 function App() {
   const [Mode, setMode] = useState("light");
@@ -29,13 +29,13 @@ function App() {
       document.body.style.backgroundColor = "#042743";
       setBtnText("Enable Light Mode");
       showAlert("Successfully Enabled DarkMode", "success");
-      document.title = "TextUtils: Dark Mode";
+      // document.title = "TextUtils: Dark Mode";
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       setBtnText("Enable Dark Mode");
       showAlert("Successfully Enabled LightMode", "success");
-      document.title = "TextUtils: Light Mode";
+      // document.title = "TextUtils: Light Mode";
       setType("primary");
     }
   };
@@ -67,15 +67,12 @@ function App() {
 
         <Alert alert={alert} />
         <div className="container">
-        {/* <Routes> */}
+        <Routes>
         
-        {/* <Route path="/About" element={<About />} /> */}
-        {/* <Route exate path="/About"> <About /> </Route> */}
       
-        {/* <Route path="/" element={<TextForm heading="Enter the text to analyze" mode={Mode} typo={type}/>}/> */}
-        <TextForm heading="Enter the text to analyze" mode={Mode} typo={type}/>
-        {/* <Route path="/about" element={<About />}/> */}
-      {/* </Routes> */}
+        <Route path="/" element={<TextForm heading="Try TextUtils" mode={Mode} typo={type}/>}/>
+        <Route path="/about" element={<About mode={Mode} typo={type}/>}/>
+      </Routes>
         </div>
     </>
   );
